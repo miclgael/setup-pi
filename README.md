@@ -103,4 +103,22 @@ Use Docker to download and install Portainer CE
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
-You should now be able to access the instance of Portainer at `<USERNAME>@<HOSTNAME>.local:9443` 
+You should now be able to access the instance of Portainer at `https://<USERNAME>@<HOSTNAME>.local:9443`. Note you will need to accept the warning about self-signed certificate if you're using Firefox.
+
+Create your admin account, and make sure you note the details somewhere. 
+
+### Optional: Install Portainer Agent.
+
+If you're using Portainer with a bunch of other machines that also run portainer, you can connect their environments together using Portainer Agent. This is an optional step, so skip if you only have one instance.
+
+```bash
+docker run -d \
+  -p 9001:9001 \
+  --name portainer_agent \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+  portainer/agent:2.19.4
+```
+
+
