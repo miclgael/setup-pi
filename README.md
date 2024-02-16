@@ -72,3 +72,35 @@ sudo apt-get update
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+
+### Post-install
+
+Without these next steps, Docker would always need to be invoked with `sudo`.
+
+NB: This may return `"groupadd: group 'docker' already exists"`. That's ok.
+
+```bash
+sudo groupadd docker
+```
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+That should do it. Try running `docker run hello-world` and it should return `"Hello from Docker!"`
+
+## [Install Portainer CE](https://docs.portainer.io/start/install-ce/server/docker/linux)
+
+First, create a dedicated volume for Portainer.
+
+```bash
+docker volume create portainer_data
+```
+
+Use Docker to download and install Portainer CE
+
+```bash
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+
+You should now be able to access the instance of Portainer at `<USERNAME>@<HOSTNAME>.local:9443` 
