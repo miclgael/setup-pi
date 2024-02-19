@@ -107,18 +107,3 @@ You should now be able to access the instance of Portainer at `https://<USERNAME
 
 Create your admin account, and make sure you note the details somewhere. 
 
-### Optional: Install Portainer Agent.
-
-If you're using Portainer with a bunch of other machines that also run portainer, you can connect their environments together using Portainer Agent. This is an optional step, so skip if you only have one instance.
-
-```bash
-docker run -d \
-  -p 9001:9001 \
-  --name portainer_agent \
-  --restart=always \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-  portainer/agent:2.19.4
-```
-
-
