@@ -1,4 +1,10 @@
 # setup-pi
+
+> [!WARNING]
+> **Deprecated**<br>
+> This repo will soon be archived. It will stay accessible but I will no longer be making updates.
+> <br> I am moving to an "All-In-One" setup repo for macOS, Linux, Windows, SteamDeck and Ungoogled Android.
+
 🍇 Setup scripts and configs for a fresh (no-desktop) Raspbian device.
 
 ## Install Raspberry Pi OS using Raspberry Pi Imager
